@@ -5,7 +5,7 @@
 #include <time.h>
 
 #define WINDOW_WIDTH 900
-#define WINDOW_HEIGHT 600
+#define WINDOW_HEIGHT 900
 #define AGENT_SIZE 2
 
 #define SCALE 10
@@ -76,10 +76,13 @@ int main(int argc, const char *argv[]) {
     SDL_Surface* surface = SDL_GetWindowSurface(window);
 
     
-    
+    //Creates array of agents
     Agent *pagent = malloc(sizeof(Agent) * num_agents);
 
-    Agent agent0 = (Agent) {WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, 0xFFFFFFFF};
+    for(int i = 0; i < num_agents; i++) {
+        Uint32 rand_color = (rand() % 256) << 16 | (rand() % 256) << 8 | (rand() % 256);
+        pagent[i] = (Agent) {WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, rand_color};
+    }
 
 
     int app_running = 1;
@@ -93,10 +96,12 @@ int main(int argc, const char *argv[]) {
             }
         }
 
-        move_agent(surface, &agent0);
+        for(int i = 0; i < num_agents; i++) {
+            move_agent(surface, &pagent[i]);
+        }
 
         //Updates window from surface buffer
         SDL_UpdateWindowSurface(window);
-        SDL_Delay(20);
+        SDL_Delay(30);
     }
 }
