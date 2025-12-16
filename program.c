@@ -1,13 +1,12 @@
-//Libraries
 #include <SDL3/SDL.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
+//Global Variables
 #define WINDOW_WIDTH 900
 #define WINDOW_HEIGHT 900
 #define AGENT_SIZE 2
-
 #define SCALE 10
 
 //Structure to hold the direction the agent will move
@@ -16,11 +15,11 @@ typedef struct Velocity {
     int vy;
 } Velocity;
 
+//Agent structure to hold its location and color
 typedef struct Agent {
     int x, y;
     Uint32 color;
 } Agent;
-
 
 
 //Function to get a random velocity pair
