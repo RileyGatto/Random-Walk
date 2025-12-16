@@ -64,7 +64,10 @@ int main(int argc, const char *argv[]) {
     //atoi converts string to int
     else if(argc == 2) num_agents = atoi(argv[1]);
 
-    else printf("Usage: %s <num-of-agents>\n", argv[0]);
+    else {
+        printf("Usage: %s <num-of-agents>\n", argv[0]);
+        exit(-1);
+    }
 
     srand(time(NULL));
     
